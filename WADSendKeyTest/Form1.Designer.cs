@@ -28,13 +28,71 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.grpTestResult = new System.Windows.Forms.GroupBox();
+            this.ResultListView = new System.Windows.Forms.ListView();
+            this.cmdStart = new System.Windows.Forms.Button();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.grpTestResult.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // grpTestResult
+            // 
+            this.grpTestResult.Controls.Add(this.ResultListView);
+            this.grpTestResult.Location = new System.Drawing.Point(37, 36);
+            this.grpTestResult.Name = "grpTestResult";
+            this.grpTestResult.Size = new System.Drawing.Size(707, 289);
+            this.grpTestResult.TabIndex = 0;
+            this.grpTestResult.TabStop = false;
+            this.grpTestResult.Text = "Test Result";
+            // 
+            // ResultListView
+            // 
+            this.ResultListView.HideSelection = false;
+            this.ResultListView.Location = new System.Drawing.Point(21, 33);
+            this.ResultListView.Name = "ResultListView";
+            this.ResultListView.Size = new System.Drawing.Size(666, 238);
+            this.ResultListView.TabIndex = 0;
+            this.ResultListView.UseCompatibleStateImageBehavior = false;
+            // 
+            // cmdStart
+            // 
+            this.cmdStart.Location = new System.Drawing.Point(673, 487);
+            this.cmdStart.Name = "cmdStart";
+            this.cmdStart.Size = new System.Drawing.Size(71, 31);
+            this.cmdStart.TabIndex = 1;
+            this.cmdStart.Text = "Start";
+            this.cmdStart.UseVisualStyleBackColor = true;
+            this.cmdStart.Click += new System.EventHandler(this.cmdStart_Click);
+            // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Location = new System.Drawing.Point(38, 341);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(706, 140);
+            this.richTextBox1.TabIndex = 2;
+            this.richTextBox1.Text = "";
+            // 
+            // Form1
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "Form1";
+            this.ClientSize = new System.Drawing.Size(778, 530);
+            this.Controls.Add(this.richTextBox1);
+            this.Controls.Add(this.cmdStart);
+            this.Controls.Add(this.grpTestResult);
+            this.Name = "Form1";
+            this.Text = "SendKey Verification";
+            this.Load += new System.EventHandler(this.Form1_Load);
+            this.grpTestResult.ResumeLayout(false);
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+        public System.Windows.Forms.GroupBox grpTestResult;
+        public System.Windows.Forms.ListView ResultListView;
+        public System.Windows.Forms.RichTextBox richTextBox1;
+        public System.Windows.Forms.Button cmdStart;
     }
 }
 

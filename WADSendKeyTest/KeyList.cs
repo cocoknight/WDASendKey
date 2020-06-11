@@ -101,6 +101,10 @@ namespace WADSendKeyTest
             k_store_app_review = "k_store_app_review"; //앱 평가 개수
 
             k_test_result_name = "k_test_result_name";
+
+
+            k_app_repeat_number = "k_app_repeat_number";
+            k_operation_repeat_number = "k_operation_repeat_number";
         }
 
         public static KeyList Instance
@@ -110,6 +114,18 @@ namespace WADSendKeyTest
             {
                 return instance;
             }
+        }
+
+        public string k_app_repeat_number
+        {
+            get;
+            //set;
+        }
+
+        public string k_operation_repeat_number
+        {
+            get;
+            //set;
         }
 
 

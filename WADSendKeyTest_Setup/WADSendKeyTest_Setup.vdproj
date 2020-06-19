@@ -998,6 +998,14 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
             }
         }
         "Release"
@@ -3255,15 +3263,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:WADSendKeyTest_Setup"
-        "ProductCode" = "8:{364FD2C3-CB9A-42A2-8175-0775FC156F74}"
-        "PackageCode" = "8:{4397B1E9-0641-432F-8F97-5C2235EF64C6}"
+        "ProductCode" = "8:{69C42D34-0E02-48D0-BB48-8079CB3B07C0}"
+        "PackageCode" = "8:{892F7966-F6B0-4E2C-AF35-9B8F257C6C42}"
         "UpgradeCode" = "8:{48CBB571-8644-43BD-9439-40D0810FF08A}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:FALSE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.0.0.1"
+        "ProductVersion" = "8:1.0.1"
         "Manufacturer" = "8:SAMSUNGELECTRONICS SQE"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"

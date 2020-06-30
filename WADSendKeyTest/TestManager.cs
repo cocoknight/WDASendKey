@@ -309,7 +309,22 @@ namespace WADSendKeyTest
 
 
                     //notepad종료(결과 상관없이 종료)
-                    var find_element = _deskTopSession.FindElementByXPath("//Window[@ClassName=\"Notepad\"]/TitleBar[@AutomationId=\"TitleBar\"]/Button[@Name=\"닫기\"]");
+                    //TOAN : 06/30/2020. Current Display Language을 check하여 element구분함.
+                    string s_string = _uiManager.getCurrent_DisplayLanguage();
+                    string element_string = "";
+
+                    if (s_string.Equals("korea"))
+                    {
+                        element_string = "닫기";
+                    }
+                    else if(s_string.Equals("usa"))
+                    {
+                        element_string = "Close";
+                    }
+
+
+                    var find_element = _deskTopSession.FindElementByXPath("//Window[@ClassName=\"Notepad\"]/TitleBar[@AutomationId=\"TitleBar\"]/Button[@Name=\""+element_string+"\"]");
+                    //var find_element = _deskTopSession.FindElementByXPath("//Window[@ClassName=\"Notepad\"]/TitleBar[@AutomationId=\"TitleBar\"]/Button[@Name=\"닫기\"]");
                     var notepad_close_button = _wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(find_element));
                     notepad_close_button.Click();
 

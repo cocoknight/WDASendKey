@@ -11,9 +11,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+//DllImport사용하기 위한 용도
+using System.Runtime.InteropServices;
+
 
 ////C# process dump남기기
 ////http://blog.naver.com/PostView.nhn?blogId=techshare&logNo=100194859982
+
 
 
 
@@ -29,6 +33,13 @@ namespace WADSendKeyTest
         public WebDriverWait _wait;
         public int _notepad_repeat_number = 5;
         public int _print_repeat_number = 10;
+
+        //DLLImport for getting display language setting
+        [DllImport("Kernel32.dll", CharSet = CharSet.Auto)]
+        public static extern System.UInt16 GetUserDefaultLanguage();
+
+        [DllImport("Kernel32.dll", CharSet = CharSet.Auto)]
+        public static extern System.UInt16 GetUserDefaultUILanguage();
 
         public Form1()
         {
@@ -251,6 +262,87 @@ namespace WADSendKeyTest
 
         }
 
+        public void MyCurrentInputLanguage()
+        {
+            InputLanguage myCurrentLanguage = InputLanguage.CurrentInputLanguage;
+            System.Diagnostics.Debug.WriteLine(string.Format("Current Input Language is: {0}", myCurrentLanguage.Culture.EnglishName));
+        }
+
+        private void Button1_Click_1(object sender, EventArgs e)
+        {
+            this.initDeskTopSession_Explicit();
+
+            try
+            {
+                //close notepad
+                //var find_element = _deskTopSession.FindElementByXPath("//Window[@ClassName=\"Notepad\"]/TitleBar[@AutomationId=\"TitleBar\"]/Button[@Name=\"닫기\"]");
+                //string s_string = "닫기";
+                string s_string = "Close";
+                var find_element = _deskTopSession.FindElementByXPath("//Window[@ClassName=\"Notepad\"]/TitleBar[@AutomationId=\"TitleBar\"]/Button[@Name=\""+s_string+"\"]");
+                find_element.Click();
+
+                var notepad_close_button = _wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(find_element));
+                notepad_close_button.Click();
+
+                var save_ignore_button = _wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(ByAccessibilityId.AccessibilityId("CommandButton_7")));
+                save_ignore_button.Click();
+
+            }
+            catch(Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine(string.Format("Full Stacktrace: {0}", ex.ToString()));
+            }
+        }
+
+        private void BtnCurrentLanguage_Click(object sender, EventArgs e)
+        {
+            //this.MyCurrentInputLanguage();
+            var langID = GetUserDefaultUILanguage();
+
+            switch(langID)
+            {
+                case 0x412:
+                    {
+                        System.Diagnostics.Debug.WriteLine(string.Format("Current Display Language is Korea"));
+                        break;
+                    }
+                case 0x409:
+                    {
+                        System.Diagnostics.Debug.WriteLine(string.Format("Current Display Language is USA"));
+                        break;
+                    }
+                default:
+                    break;
+            }
+        }
+
+       
+        public string getCurrent_DisplayLanguage()
+        {
+            string retValue = "";
+
+            var langID = GetUserDefaultUILanguage();
+
+            switch (langID)
+            {
+                case 0x412:
+                    {
+                        System.Diagnostics.Debug.WriteLine(string.Format("Current Display Language is Korea"));
+                        retValue = "korea";
+                        break;
+                    }
+                case 0x409:
+                    {
+                        System.Diagnostics.Debug.WriteLine(string.Format("Current Display Language is USA"));
+                        retValue = "usa";
+                        break;
+                    }
+                default:
+                    break;
+            }
+
+            return retValue;
+        }
 
 
     }

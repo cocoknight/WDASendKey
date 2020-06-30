@@ -144,7 +144,7 @@
             this.Controls.Add(this.grpTestResult);
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "Form1";
-            this.Text = "SendKey Verification 1.0.1";
+            this.Text = "SendKey Verification 1.0.2";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.grpTestResult.ResumeLayout(false);
             this.grpTestSetting.ResumeLayout(false);
